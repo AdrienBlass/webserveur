@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import '../main.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'Utilisateur.dart';
+import '../objets/Utilisateur.dart';
 class Cartographie extends StatelessWidget {
   const Cartographie({super.key});
 
@@ -30,9 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Utilisateur> users = [
-    Utilisateur("Loic", 50.326085, 3.514633, 50),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     MarkerLayer(
                       markers: users.map((user) {
-                        final latitude = user.localisationX;
-                        final longitude = user.localisationY;
+                        final latitude = user.longitude;
+                        final longitude = user.latitude;
                         return Marker(
                           width: 90.0,
                           height: 50.0,
@@ -84,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         borderRadius: BorderRadius.circular(5.0),
                         ),
                             child: Center(
-                             child: Text('''${user.nom} ${user.scoreConfiance}''' , style: TextStyle(color: Colors.white)),
+                             child: Text('''${user.pseudo} ${user.scoreConfiance}''' , style: TextStyle(color: Colors.white)),
                               // Use user.nom for name
                           ),
                           ),
